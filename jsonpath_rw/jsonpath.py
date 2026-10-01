@@ -486,7 +486,7 @@ class Index(JSONPath):
     def find(self, datum):
         datum = DatumInContext.wrap(datum)
         
-        if datum.value and len(datum.value) > self.index:
+        if datum.value and -len(datum.value) <= self.index < len(datum.value):
             return [DatumInContext(datum.value[self.index], path=self, context=datum)]
         else:
             return []
